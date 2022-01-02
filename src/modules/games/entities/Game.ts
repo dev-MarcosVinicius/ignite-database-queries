@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 
 import { User } from '../../users/entities/User';
+import { Orders } from '../../orders/entities/Orders';
 
 @Entity('games')
 export class Game {
@@ -19,6 +20,9 @@ export class Game {
 
   @ManyToMany(() => User, (user) => user.games)
   users: User[];
+
+  @ManyToMany(() => Orders, (order) => order.games)
+  orders: Orders[];
 
   @CreateDateColumn()
   created_at: Date;
